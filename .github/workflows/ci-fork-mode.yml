@@ -86,9 +86,9 @@ jobs:
         ECHIDNA_RPC_URL: ${{ secrets[matrix.rpckey] }}
         ETHERSCAN_API_KEY: ${{ secrets[matrix.apikey] }}
 
-#    - name: Save cache
-#      uses: actions/cache/save@v3
-#      if: ${{ always() }}
-#      with:
-#        path: ${{ matrix.name }}/corpus/cache
-#        key: ${{ steps.cache-restore.outputs.cache-primary-key }}
+    - name: Save cache
+      uses: actions/cache/save@v3
+      if: ${{ always() }}
+      with:
+        path: ${{ matrix.name }}/corpus/cache
+        key: ${{ steps.cache-restore.outputs.cache-primary-key }}
