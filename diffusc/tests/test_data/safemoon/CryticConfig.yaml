@@ -1,0 +1,5 @@
+testMode: assertion
+testLimit: 1000000000000
+corpusDir: ./corpus
+codeSize: 0xffff
+seqLen: 100

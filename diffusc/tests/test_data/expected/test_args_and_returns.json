@@ -1,0 +1,49 @@
+{
+    "CodeGeneration.err0()": {
+        "args": [],
+        "rets": []
+    },
+    "CodeGeneration.err1()": {
+        "args": [],
+        "rets": []
+    },
+    "CodeGeneration.err2(uint256,uint256)": {
+        "args": [
+            "uint256",
+            "uint256"
+        ],
+        "rets": []
+    },
+    "CodeGeneration.newSt(uint256)": {
+        "args": [
+            "uint256"
+        ],
+        "rets": [
+            "St memory"
+        ]
+    },
+    "CodeGeneration.getSt(uint256)": {
+        "args": [
+            "uint256"
+        ],
+        "rets": [
+            "St memory"
+        ]
+    },
+    "CodeGeneration.removeSt(CodeGeneration.St)": {
+        "args": [
+            "St memory"
+        ],
+        "rets": []
+    },
+    "CodeGeneration.complexTypes(I,uint256[])": {
+        "args": [
+            "address",
+            "uint256[] memory"
+        ],
+        "rets": [
+            "St[] memory",
+            "uint8"
+        ]
+    }
+}

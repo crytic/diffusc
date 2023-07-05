@@ -1,0 +1,97 @@
+---
+name: Pytest
+
+defaults:
+  run:
+    shell: bash
+
+on:
+  push:
+    branches: [master, dev]
+  pull_request:
+  schedule:
+    # run CI every day even if no PRs/merges occur
+    - cron: '0 12 * * *'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest", "windows-2022"]
+        type: ["unit"]
+        bsc_api: [BSC_API_KEY]
+        bsc_rpc: [BSC_RPC_URL]
+        goerli_api: [ETHEREUM_API_KEY]
+        goerli_rpc: [GOERLI_RPC_URL]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: "pip"
+          cache-dependency-path: setup.py
+
+      - name: Install dependencies
+        run: |
+          pip install ".[test]"
+          solc-select install 0.8.11
+          solc-select use 0.8.11
+
+      - name: Run ${{ matrix.type }} tests
+        env:
+          TEST_TYPE: ${{ matrix.type }}
+          BSC_API_KEY: ${{ secrets[matrix.bsc_api] }}
+          BSC_RPC_URL: ${{ secrets[matrix.bsc_rpc] }}
+          GOERLI_API_KEY: ${{ secrets[matrix.goerli_api] }}
+          GOERLI_RPC_URL: ${{ secrets[matrix.goerli_rpc] }}
+        # Only run coverage on ubuntu-latest.
+        run: |
+          if [ ${{ matrix.os }} = "ubuntu-latest" ]; then
+            sudo cp bin/echidna /usr/local/bin
+            TEST_ARGS="--cov=diffusc --cov-append"
+          elif [ ${{ matrix.os }} = "windows-2022" ]; then
+            TEST_ARGS=""
+          fi
+          bash "./.github/scripts/${TEST_TYPE}_test_runner.sh" $TEST_ARGS
+
+
+      - name: Upload coverage
+        uses: ./.github/actions/upload-coverage
+        # only aggregate test coverage over linux-based tests to avoid any OS-specific filesystem information stored in
+        # coverage metadata.
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+
+  coverage:
+    needs:
+      - tests
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+
+      - run: pip install coverage[toml]
+
+      - name: download coverage data
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: coverage-data
+
+      - name: combine coverage data
+        id: combinecoverage
+        run: |
+          set +e
+          python -m coverage combine
+          echo "## python coverage" >> $GITHUB_STEP_SUMMARY
+          python -m coverage report -m --format=markdown >> $GITHUB_STEP_SUMMARY

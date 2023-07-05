@@ -1,0 +1,7 @@
+testMode: assertion
+testLimit: 1000000000000
+corpusDir: corpus
+codeSize: 0xffff
+seqLen: 100
+rpcBlock: 105828093
+rpcUrl: https://optimism-mainnet.infura.io/v3/e4c0428ba2094521ac1cd6389596a012

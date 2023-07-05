@@ -1,0 +1,5 @@
+testMode: assertion
+testLimit: 999999999
+corpusDir: diffusc/tests/unit/core/test_data/output/corpus
+codeSize: 0xffff
+seqLen: 99

@@ -1,0 +1,8 @@
+testMode: assertion
+testLimit: 1000000000000
+corpusDir: corpus
+codeSize: 0xffff
+seqLen: 100
+rpcBlock: 28261629
+rpcUrl: https://winter-greatest-flower.bsc.discover.quiknode.pro/a3f80836c4ef8bf32a93df997e312a92a206335e/
+sender: ['0xa0c92efdcea55ca19396e4850b8d29df6f907bcd']

@@ -1,0 +1,8 @@
+testMode: assertion
+testLimit: 1000000000000
+corpusDir: corpus
+codeSize: 0xffff
+seqLen: 100
+rpcBlock: 13322797
+rpcUrl: https://eth-mainnet.g.alchemy.com/v2/AVRqMCK6gpeQ9TE53xTDcB5t7ERaMyTR
+sender: ['0x99847700E2be6ACCA3c6a67624fe9d855feb6581','0xC6B4846Bdd0061d37C38D25acff0eC5186e2423f','0x503828976D22510aad0201ac7EC88293211D23Da','0xe3a7525bcEa8C402BB09AA8435b340b2B0c7F3d1','0x49F4ca97f0BBa39425A2975e1FfCcE2587A441B2']

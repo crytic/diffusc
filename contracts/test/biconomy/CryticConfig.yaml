@@ -1,0 +1,8 @@
+testMode: assertion
+testLimit: 1000000000000
+corpusDir: corpus
+codeSize: 0xffff
+seqLen: 100
+rpcBlock: 28237665
+rpcUrl: https://polygon-mainnet.g.alchemy.com/v2/I8J8tUiZaYwbrnDvtpnGRLvahhkmlxD-
+sender: ['0xd76b82204be75ab9610b04cf27c4f4a34291d5e6','0x1A9EFC7507D3Bb3206cA5baBb4dF9e168Bd5cDEE','0xD95a366A2C887033ba71743c6342e2Df470E9dB9','0xbE47717Dd0323d5b1881715eF47Cc68fCc910f99','0x3b91F3bA47499eCc25f944C57e5adDe079dfBeEc','0x0ebAa885cfa865159BF9e2dD4bbd4668a22DAF04']

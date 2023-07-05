@@ -1,0 +1,8 @@
+testMode: assertion
+testLimit: 123456
+codeSize: 0xffff
+seqLen: 999999
+contractAddr: '0x999999'
+rpcBlock: 12345678
+rpcUrl: https://mainnet.infura.io/v3/1234567891011121314151617181920
+sender: ['0x0123','0x4567','0x8910']

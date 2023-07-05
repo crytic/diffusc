@@ -1,0 +1,9 @@
+testMode: assertion
+testLimit: 999999999
+corpusDir: diffusc/tests/unit/core/test_data/output/corpus
+codeSize: 0xffff
+seqLen: 99
+contractAddr: '0x309d413391e975B553B7B8D19bC11F8a6c2eB889'
+rpcBlock: 26857408
+rpcUrl: https://winter-greatest-flower.bsc.discover.quiknode.pro/a3f80836c4ef8bf32a93df997e312a92a206335e/
+sender: ['0x678ee23173dce625A90ED651E91CA5138149F590','0x4dC75a9736750ea824be40AbF57Fb93B554F2e40','0xcD23e2f393eb8a294B4c3F707a4a3a492dbC89de','0xd692E9Ee11B023647862E3a84Bb841C95bd3B63D','0xF521473c5707e9443FCE020187336dA083740f6E']

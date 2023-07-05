@@ -1,0 +1,94 @@
+name: Diffusc (fork mode)
+
+on:
+  push:
+    paths-ignore:
+      - "**.md"
+      - "**.rs"
+    branches:
+      - main
+  pull_request:
+  schedule:
+    # run CI every day even if no PRs/merges occur
+    - cron:  '0 12 * * *'
+
+jobs:
+  tests:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - name: Safemoon
+            args: 0x0296201bfdfb410c29ef30bcae1b395537aeeb31 0xEb11a0a0beF1AC028B8C2d4CD64138DD5938cA7A -p 0x42981d0bfbAf196529376EE702F2a9Eb9092fcB5 -n bsc -v 0.8.11
+            block: 26857408
+            rpckey: BSC_RPC_URL
+            apikey: BSC_API_KEY
+
+#          - name: Compound
+#            args: 0x75442Ac771a7243433e033F3F8EaB2631e22938f 0x374ABb8cE19A73f2c4EFAd642bda76c797f19233 -t 0x6C8c6b02E7b2BE14d4fA6022Dfd6d75921D90E4E,0xc00e94Cb662C3520282E6f5717214004A7f26888 -p 0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B -u -v 0.8.10 -T --token-holder 0x309d413391e975B553B7B8D19bC11F8a6c2eB889
+#            block: 13322797
+#            rpckey: ETHEREUM_RPC_URL
+#            apikey: ETHEREUM_API_KEY
+
+          - name: AnkrRewardEarningBNB
+            args: 0xE380B02b16e050c2801CcA83461916FEca652ecF 0x952398318838b4915ee5E800622a9613887759f5 -p 0xfe39985D7eFF914c50A06bA0cFfcCA8361e00C0e -t 0x52F24a5e03aee338Da5fd9Df68D2b6FAe1178827:0x2c00CE1a935FF8c9e78580533e2E17c36281c26E -T -n bsc -v 0.8.16
+            block: 28261629
+            rpckey: BSC_RPC_URL
+            apikey: BSC_API_KEY
+
+          - name: DeusFinanceDEI
+            args: 0x1472b3081d81b792e697aea90accbbc4adc5baf9 0xbc1b62db243b51dabcd9540473324f36e094ec55 -p 0xde1e704dae0b4051e80dabb26ab6ad6c12262da0 -n arbi -v 0.8.4
+            block: 87626025
+            rpckey: ARBITRUM_RPC_URL
+            apikey: ARBITRUM_API_KEY
+
+#          - name: ExactlyRewardController
+#            args: 0x3a31a7e94b30bd92151b4711522f118902977c3c 0xc91dc7a797cd5fbcf6f334c792a2b24eff55292c -p 0xBd1ba78A3976cAB420A9203E6ef14D18C2B2E031 -t 0x81C9A7B55A4df39A9B7B5F781ec0e53539694873:0xaec84eac74981ab22905919cb282b78c7ca782df,0xc4d4500326981eacD020e20A81b1c479c161c7EF:0xbd9c70db872fdd9029ee5fa2a0ea30eabf7a1583 -n optim -v 0.8.11
+#            block: 99811370
+#            rpckey: OPTIMISM_RPC_URL
+#            apikey: OPTIMISM_API_KEY
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup Python 3.10
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install diffusc
+      run: |
+        pip3 install .
+        sudo cp bin/echidna /usr/local/bin
+        solc-select install 0.8.17
+        solc-select use 0.8.17
+
+    - name: Restore cached contracts/slots
+      id: cache-restore
+      uses: actions/cache/restore@v3
+      with:
+        path: |
+          ${{ matrix.name }}/corpus/cache
+          ${{ matrix.name }}/crytic-cache
+        key: cache=${{ matrix.name }}
+
+    - name: Run diffusc
+      id: prepare
+      run: |
+        #rm -rf crytic-export contracts
+        diffusc ${{ matrix.args }} -d ${{ matrix.name }} -L 200000 -r
+      env:
+        ECHIDNA_RPC_BLOCK: ${{ matrix.block }}
+        ECHIDNA_RPC_URL: ${{ secrets[matrix.rpckey] }}
+        ETHERSCAN_API_KEY: ${{ secrets[matrix.apikey] }}
+
+#    - name: Save cache
+#      uses: actions/cache/save@v3
+#      if: ${{ always() }}
+#      with:
+#        path: ${{ matrix.name }}/corpus/cache
+#        key: ${{ steps.cache-restore.outputs.cache-primary-key }}

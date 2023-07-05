@@ -1,0 +1,37 @@
+name: mypy
+
+on:
+  push:
+    paths-ignore:
+      - "**.md"
+      - "**.rs"
+    branches:
+      - main
+      - dev
+  pull_request:
+  schedule:
+    # run CI every day even if no PRs/merges occur
+    - cron:  '0 12 * * *'
+
+jobs:
+  build:
+    name: Run mypy type checking
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install mypy
+        run: python3 -m pip install mypy==1.2.0 types-requests
+
+      - name: Install dependencies
+        run: pip3 install -r requirements.txt
+
+      - name: Check types
+        run: mypy diffusc/diffusc.py

@@ -1,0 +1,25 @@
+[tool.black]
+target-version = ["py36"]
+line-length = 100
+[tool.pylint.messages_control]
+disable = """
+missing-module-docstring,
+missing-class-docstring,
+missing-function-docstring,
+unnecessary-lambda,
+bad-continuation,
+cyclic-import,
+line-too-long,
+invalid-name,
+fixme,
+too-many-return-statements,
+too-many-ancestors,
+too-few-public-methods,
+logging-fstring-interpolation,
+logging-not-lazy,
+duplicate-code,
+import-error,
+unsubscriptable-object
+"""
+[tool.pytest.ini_options]
+xfail_strict = true

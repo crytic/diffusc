@@ -1,0 +1,7 @@
+testMode: assertion
+testLimit: 1000000000000
+corpusDir: corpus
+codeSize: 0xffff
+seqLen: 100
+rpcBlock: 90761917
+rpcUrl: https://opt-mainnet.g.alchemy.com/v2/QdC_gQ0m7R6APIlc0vleJeqs_8g5DO6y

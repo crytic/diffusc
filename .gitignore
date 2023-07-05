@@ -1,0 +1,99 @@
+*.swp
+*.swo
+__pycache__
+
+# Dependencies
+node_modules
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Logs
+logs
+*.log
+
+# Configuration
+.env
+
+# Virtual Environment
+venv
+env
+
+# Test Coverage
+coverage
+coverage.json
+coverageEnv
+allFiredEvents
+.coverage_artifacts
+.coverage_cache
+.coverage_contracts
+
+# Test Artifacts
+.mypy_cache/
+**/test_data/output
+
+# OSX artifacts
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor artifacts
+.*.sw[a-z]
+*.un~
+Session.vim
+/*.sublime-project
+*.sublime-workspace
+/sftp-config.json
+.project
+*.tmp
+*~
+*.bak
+local.properties
+.settings
+.classpath
+.loadpath
+.directory
+npm-debug.log
+yarn-error.log
+.idea/*
+build/
+
+# Runtime data
+pids
+*.pid
+*.seed
+allFiredEvents
+scTopics
+
+# node-waf configuration
+.lock-wscript
+
+# Foundry
+cache
+out
+
+# Echidna
+crytic-export
+corpus
+**/corpus
+**/crytic-cache
+**/crytic-exploit
+
+# VS Code
+.vscode

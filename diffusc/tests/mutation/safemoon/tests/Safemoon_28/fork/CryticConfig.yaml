@@ -1,0 +1,8 @@
+testMode: assertion
+testLimit: 1000000000000
+corpusDir: corpus
+codeSize: 0xffff
+seqLen: 100
+rpcBlock: 26857408
+rpcUrl: https://winter-greatest-flower.bsc.discover.quiknode.pro/a3f80836c4ef8bf32a93df997e312a92a206335e/
+deployContracts: [['0x0102030405060708091011121314151617181920', 'Safemoon_28']]
