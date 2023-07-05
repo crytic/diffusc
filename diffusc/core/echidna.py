@@ -97,9 +97,11 @@ def run_timed_campaign(proc: Popen, minutes: int = 60) -> Tuple[int, int, dict |
     return tests, fuzzes, results
 
 
-def run_echidna_campaign(proc: Popen, min_tests: int = 1, max_len: int = 25000) -> int:
+def run_echidna_campaign(proc: Popen, min_tests: int = 1, max_len: int = 25000) -> Tuple[int, int, dict | None]:
     keep_running = True
+    fuzzes = -1
     max_value = -1
+    results = None
     while keep_running:
         line = ""
         try:
@@ -147,5 +149,7 @@ def run_echidna_campaign(proc: Popen, min_tests: int = 1, max_len: int = 25000) 
 
     CryticPrint.print_information("* Terminating Echidna campaign!")
     proc.terminate()
-    proc.wait()
-    return max_value
+    if max_value >= 0:
+        # Read the final results of the campaign
+        results = get_results_json(proc)
+    return max_value, fuzzes, results

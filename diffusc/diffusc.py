@@ -18,7 +18,7 @@ from diffusc.core.code_generation import CodeGenerator
 from diffusc.core.report_generation import ReportGenerator
 from diffusc.utils.helpers import write_to_file
 from diffusc.utils.crytic_print import CryticPrint
-from diffusc.core.echidna import create_echidna_process, run_timed_campaign
+from diffusc.core.echidna import create_echidna_process, run_timed_campaign, run_echidna_campaign
 import diffusc.utils.network_vars as net_vars
 
 
@@ -178,6 +178,12 @@ def main(_args: Optional[Sequence[str]] = None) -> int:
         dest="senders",
         help="Specifies one or more addresses for the fuzzer to send transactions from, separated by commas (default: "
         "0x1000,0x2000,0x3000).",
+    )
+    parser.add_argument(
+        "--first-failure",
+        dest="first_failure",
+        help="Specifies whether to end the fuzzing campaign (in run mode) as soon as an invariant is broken, rather "
+        "than running a timed campaign. Included primarily for continuous integration testing."
     )
 
     args = parser.parse_args(_args)
@@ -339,7 +345,10 @@ def main(_args: Optional[Sequence[str]] = None) -> int:
             config,
             ["--format", "json", "--workers", str(workers)],
         )
-        max_value, fuzzes, results = run_timed_campaign(proc, run_duration)
+        if args.first_failure:
+            max_value, fuzzes, results = run_echidna_campaign(proc)
+        else:
+            max_value, fuzzes, results = run_timed_campaign(proc, run_duration)
         if max_value <= 0:
             CryticPrint.print_error(
                 f"* Echidna failed to find a difference after {fuzzes} rounds of fuzzing"
