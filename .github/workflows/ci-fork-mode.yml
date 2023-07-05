@@ -1,13 +1,6 @@
 name: Diffusc (fork mode)
 
 on:
-  push:
-    paths-ignore:
-      - "**.md"
-      - "**.rs"
-    branches:
-      - main
-  pull_request:
   schedule:
     # run CI every day even if no PRs/merges occur
     - cron:  '0 12 * * *'
@@ -45,12 +38,6 @@ jobs:
             rpckey: ARBITRUM_RPC_URL
             apikey: ARBITRUM_API_KEY
 
-#          - name: ExactlyRewardController
-#            args: 0x3a31a7e94b30bd92151b4711522f118902977c3c 0xc91dc7a797cd5fbcf6f334c792a2b24eff55292c -p 0xBd1ba78A3976cAB420A9203E6ef14D18C2B2E031 -t 0x81C9A7B55A4df39A9B7B5F781ec0e53539694873:0xaec84eac74981ab22905919cb282b78c7ca782df,0xc4d4500326981eacD020e20A81b1c479c161c7EF:0xbd9c70db872fdd9029ee5fa2a0ea30eabf7a1583 -n optim -v 0.8.11
-#            block: 99811370
-#            rpckey: OPTIMISM_RPC_URL
-#            apikey: OPTIMISM_API_KEY
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -80,7 +67,7 @@ jobs:
       id: prepare
       run: |
         #rm -rf crytic-export contracts
-        diffusc ${{ matrix.args }} -d ${{ matrix.name }} -L 200000 -r
+        diffusc ${{ matrix.args }} -d ${{ matrix.name }} -L 200000 -r --first-failure
       env:
         ECHIDNA_RPC_BLOCK: ${{ matrix.block }}
         ECHIDNA_RPC_URL: ${{ secrets[matrix.rpckey] }}

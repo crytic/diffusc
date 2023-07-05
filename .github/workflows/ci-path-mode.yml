@@ -1,13 +1,6 @@
 name: Diffusc (path mode)
 
 on:
-  push:
-    paths-ignore:
-      - "**.md"
-      - "**.rs"
-    branches:
-      - main
-  pull_request:
   schedule:
     # run CI every day even if no PRs/merges occur
     - cron:  '0 12 * * *'
@@ -48,4 +41,4 @@ jobs:
     - name: Run diffusc
       id: prepare
       run: |
-        diffusc ${{ matrix.args }} -d ${{ matrix.out }} -L 200000 -r
+        diffusc ${{ matrix.args }} -d ${{ matrix.out }} -L 200000 -r --first-failure
