@@ -130,6 +130,6 @@ def test_diffusc_path_run_mode() -> None:
         os.path.join(safemoon_dir, "DiffFuzzCustomInit.sol"),
         "DiffFuzzInit",
         "-r",
-        "10"
+        "10",
     ]
     assert main(args) == 0
