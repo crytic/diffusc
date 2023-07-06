@@ -9,6 +9,13 @@ defaults:
 on:
   pull_request:
     branches: [main, dev]
+  push:
+    paths-ignore:
+      - "**.md"
+      - "**.rs"
+    branches:
+      - main
+      - dev
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
