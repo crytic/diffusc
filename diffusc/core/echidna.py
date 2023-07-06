@@ -97,7 +97,9 @@ def run_timed_campaign(proc: Popen, minutes: int = 60) -> Tuple[int, int, dict |
     return tests, fuzzes, results
 
 
-def run_echidna_campaign(proc: Popen, min_tests: int = 1, max_len: int = 25000) -> Tuple[int, int, dict | None]:
+def run_echidna_campaign(
+    proc: Popen, min_tests: int = 1, max_len: int = 25000
+) -> Tuple[int, int, dict | None]:
     keep_running = True
     fuzzes = -1
     max_value = -1

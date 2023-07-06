@@ -183,7 +183,7 @@ def main(_args: Optional[Sequence[str]] = None) -> int:
         "--first-failure",
         action="store_true",
         help="Specifies whether to end the fuzzing campaign (in run mode) as soon as an invariant is broken, rather "
-        "than running a timed campaign. Included primarily for continuous integration testing."
+        "than running a timed campaign. Included primarily for continuous integration testing.",
     )
 
     args = parser.parse_args(_args)
