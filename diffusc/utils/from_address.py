@@ -60,6 +60,7 @@ def get_deployed_contract(
     return contract, impl_slither, impl_contract
 
 
+# pylint: disable=too-many-arguments
 def get_contract_data_from_address(
     address: str,
     implementation: str,
