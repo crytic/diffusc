@@ -68,7 +68,7 @@ def get_contract_data_from_address(
     network_info: NetworkInfoProvider,
     suffix: str = "",
     is_main_proxy: bool = False,
-    main_proxy_impl: ContractData = None
+    main_proxy_impl: ContractData = None,
 ) -> ContractData:
     """Get a ContractData object from a network address, including Slither object."""
 
