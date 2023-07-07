@@ -97,7 +97,9 @@ def run_timed_campaign(proc: Popen, minutes: int = 60) -> Tuple[int, int, dict |
     return tests, fuzzes, results
 
 
-def run_echidna_campaign(proc: Popen, min_tests: int = 1, max_len: int = 25000) -> Tuple[int, int, dict | None]:
+def run_echidna_campaign(
+    proc: Popen, min_tests: int = 1, max_len: int = 25000
+) -> Tuple[int, int, dict | None]:
     keep_running = True
     fuzzes = -1
     max_value = -1
@@ -120,9 +122,7 @@ def run_echidna_campaign(proc: Popen, min_tests: int = 1, max_len: int = 25000) 
             keep_running = fuzzes <= max_len
             if tests > max_value:
                 max_value = tests
-                if fuzzes == 0:
-                    CryticPrint.print_information("* Reading initial bytecodes and slots..")
-                elif fuzzes > 0:
+                if fuzzes > 0:
                     CryticPrint.print_information("* Fuzzing campaign started!")
                 if max_value >= min_tests:
                     CryticPrint.print_success(

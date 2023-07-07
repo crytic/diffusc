@@ -9,6 +9,13 @@ defaults:
 on:
   pull_request:
     branches: [main, dev]
+  push:
+    paths-ignore:
+      - "**.md"
+      - "**.rs"
+    branches:
+      - main
+      - dev
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -43,7 +50,7 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           # Compare against the base branch
           # This is only accessible on PR
-          DEFAULT_BRANCH: ${{ github.base_ref }}
+          DEFAULT_BRANCH: ${{ github.base_ref || github.ref_name }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Run only pylint
           VALIDATE_PYTHON: true

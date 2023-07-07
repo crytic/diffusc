@@ -11,9 +11,13 @@ on:
     branches: [main, dev]
     paths:
       - "**/*.py"
-  schedule:
-    # run CI every day even if no PRs/merges occur
-    - cron: '0 12 * * *'
+  push:
+    paths-ignore:
+      - "**.md"
+      - "**.rs"
+    branches:
+      - main
+      - dev
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
