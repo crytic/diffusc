@@ -23,6 +23,7 @@ def get_deployed_contract(
     implementation: str,
     slither_provider: NetworkSlitherProvider,
     network_info: NetworkInfoProvider,
+    is_main_proxy: bool = False,
 ) -> tuple[Contract, Slither | None, Contract | None]:
     """Get deployed contract ABI from Slither
     Will get the correct implementation if the contract is a proxy
@@ -36,7 +37,7 @@ def get_deployed_contract(
     impl_slither = None
     impl_contract = None
 
-    if contract.is_upgradeable_proxy:
+    if contract.is_upgradeable_proxy and not is_main_proxy:
         if implementation == "":
             implementation, contract_data = network_info.get_proxy_implementation(
                 contract, contract_data
@@ -59,12 +60,15 @@ def get_deployed_contract(
     return contract, impl_slither, impl_contract
 
 
+# pylint: disable=too-many-arguments
 def get_contract_data_from_address(
     address: str,
     implementation: str,
     slither_provider: NetworkSlitherProvider,
     network_info: NetworkInfoProvider,
     suffix: str = "",
+    is_main_proxy: bool = False,
+    main_proxy_impl: ContractData = None,
 ) -> ContractData:
     """Get a ContractData object from a network address, including Slither object."""
 
@@ -88,19 +92,25 @@ def get_contract_data_from_address(
 
     if contract_data["valid_data"]:
         contract, impl_slither, impl_contract = get_deployed_contract(
-            contract_data, implementation, slither_provider, network_info
+            contract_data, implementation, slither_provider, network_info, is_main_proxy
         )
         contract_data["contract_object"] = contract
 
-        if impl_slither and impl_contract:
+        if (impl_slither and impl_contract) or is_main_proxy:
             contract_data["is_proxy"] = True
+            if is_main_proxy and main_proxy_impl:
+                impl_contract = main_proxy_impl["contract_object"]
+                impl_slither = main_proxy_impl["slither"]
             contract_data["implementation_slither"] = impl_slither
             contract_data["implementation_object"] = impl_contract
             contract_data["implementation_slot"] = get_proxy_implementation_slot(contract)
             if contract_data["implementation_slot"] is None:
                 _, proxy_data = network_info.get_proxy_implementation(contract, contract_data)
                 contract_data["implementation_slot"] = proxy_data["implementation_slot"]
-            contract_data["is_erc20"] = impl_contract.is_erc20()
+            if impl_contract:
+                contract_data["is_erc20"] = impl_contract.is_erc20()
+            else:
+                contract_data["is_erc20"] = False
             if implementation != "":
                 contract_data["contract_object"] = contract_data["implementation_object"]
                 contract_data["slither"] = contract_data["implementation_slither"]

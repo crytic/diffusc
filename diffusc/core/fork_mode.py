@@ -201,7 +201,12 @@ class ForkMode(AnalysisMode):
             )
             if is_address(self._proxy_address):
                 self._proxy = get_contract_data_from_address(
-                    self._proxy_address, "", self._provider, self.net_info
+                    self._proxy_address,
+                    "",
+                    self._provider,
+                    self.net_info,
+                    is_main_proxy=True,
+                    main_proxy_impl=self._v2,
                 )
                 if not self._proxy["valid_data"]:
                     CryticPrint.print_error(
