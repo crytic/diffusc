@@ -52,19 +52,19 @@ class ReportGenerator:
                 events: List[str] = test["events"]
                 txs: List[dict] = test["transactions"]
                 name = txs[len(txs) - 1]["function"]
-                if any(tx["function"] in new_funcs for tx in txs):
-                    print_mode = PrintMode.INFORMATION
-                    CryticPrint.print_information(
-                        f"* Found different behavior in {name}!\n"
-                        f"  * This test involves a call to a new state-modifying function, and may be expected\n"
-                        f"  * Test status: {test['status']}\n"
-                        f"  * Tx sequence:"
-                    )
-                elif any(sig in event for event in events for sig in TRANSFER_SIGS):
+                if any(sig in event for event in events for sig in TRANSFER_SIGS):
                     print_mode = PrintMode.ERROR
                     CryticPrint.print_error(
                         f"* Found different behavior in {name}!\n"
                         f"  * This test involves a token transfer event (impact: HIGH)\n"
+                        f"  * Test status: {test['status']}\n"
+                        f"  * Tx sequence:"
+                    )
+                elif any(tx["function"] in new_funcs for tx in txs):
+                    print_mode = PrintMode.INFORMATION
+                    CryticPrint.print_information(
+                        f"* Found different behavior in {name}!\n"
+                        f"  * This test involves a call to a new state-modifying function, and may be expected\n"
                         f"  * Test status: {test['status']}\n"
                         f"  * Tx sequence:"
                     )
