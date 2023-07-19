@@ -124,7 +124,8 @@ Additional options unlock greater functionality:
 * `--senders`: Explicitly specify a list of sender addresses to use (in fork mode). Echidna defaults to `0x1000`, `0x2000` and `0x3000`.
 * `--min-token-balance`: The minimum token balance required when searching for holders (default 10000).
 * `--max-token-holders`: The maximum number of holders to find per token (default 5).
-* `-v, --version`: The solc compiler version to use (default 0.8.0).
+* `-V, --solc-version`: The solc compiler version to use (default 0.8.0).
+* `-v, --version`: The current version of Diffusc.
 * `-u, --fuzz-upgrade`: Flag to include an upgrade function in test contract, to upgrade to V2 mid-transaction sequence (default false).
 * `-P, --protected`: Flag to include test wrappers for protected functions, i.e., with modifier like `onlyOwner` (default false).
 * `-x, --external-taint`: Flag to analyze external calls to find tainted external contracts (default false).
