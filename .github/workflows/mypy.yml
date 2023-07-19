@@ -28,7 +28,7 @@ jobs:
           python-version: '3.10'
 
       - name: Install mypy
-        run: python3 -m pip install mypy==1.2.0 types-requests
+        run: python3 -m pip install mypy==1.2.0 types-requests types-setuptools
 
       - name: Install dependencies
         run: pip3 install -r requirements.txt
