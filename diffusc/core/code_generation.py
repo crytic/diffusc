@@ -936,7 +936,7 @@ class CodeGenerator:
 
         CryticPrint.print_information("\n* Generating exploit contract...")
         # Add solidity pragma and SPDX to avoid warnings
-        final_contract += f"// SPDX-License-Identifier: AGPLv3\npragma solidity ^{version};\n\n"
+        final_contract += f"// SPDX-License-Identifier: AGPLv3\npragma solidity >={version};\n\n"
         try:
             # Check the major version number, and include abi encoder if below 0.8.0
             major_version = int(self._version.split(".")[1])

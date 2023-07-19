@@ -10,7 +10,7 @@ setup(
     description="Diffusc automatically generates differential fuzz testing contracts for use with Echidna.",
     url="https://github.com/webthethird/solidity-diff-fuzz-upgrades",
     author="Trail of Bits",
-    version="0.1.0",
+    version="0.1.1",
     packages=find_packages(),
     python_requires=">=3.8",
     install_requires=[

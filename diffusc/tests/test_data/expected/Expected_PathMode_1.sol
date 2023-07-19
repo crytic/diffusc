@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPLv3
-pragma solidity ^0.8.2;
+pragma solidity >=0.8.2;
 
 import { ContractV1 as ContractV1_V1 } from "../ContractV1.sol";
 import { ContractV2 as ContractV2_V2 } from "../ContractV2.sol";
