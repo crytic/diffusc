@@ -61,8 +61,9 @@ def main(_args: Optional[Sequence[str]] = None) -> int:
         help="Specifies the solc version to use in the test contract (default is 0.8.0).",
     )
     parser.add_argument(
+        "-v",
         "--version",
-        help="displays the current version",
+        help="Displays the current version of diffusc",
         version=require("diffusc")[0].version,
         action="version",
     )
