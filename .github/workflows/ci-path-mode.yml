@@ -16,11 +16,11 @@ jobs:
         include:
           - name: Safemoon
             out: ./contracts/test/safemoon/
-            args: ./diffusc/tests/test_data/safemoon/SafemoonV2.sol ./diffusc/tests/test_data/safemoon/SafemoonV3.sol -p ./diffusc/tests/test_data/safemoon/TransparentProxyTestHarness.sol -v 0.8.11 --run-custom ./contracts/test/safemoon/DiffFuzzCustomInit.sol DiffFuzzInit
+            args: ./diffusc/tests/test_data/safemoon/SafemoonV2.sol ./diffusc/tests/test_data/safemoon/SafemoonV3.sol -p ./diffusc/tests/test_data/safemoon/TransparentProxyTestHarness.sol -V 0.8.11 --run-custom ./contracts/test/safemoon/DiffFuzzCustomInit.sol DiffFuzzInit
 
           - name: Compound
             out: ./contracts/test/compound
-            args: ./contracts/implementation/compound/compound-0.8.10/ComptrollerHarnessV1.sol ./contracts/implementation/compound/compound-0.8.10/ComptrollerHarnessV2.sol -t ./contracts/implementation/compound/compound-0.8.10/CErc20.sol,./contracts/implementation/compound/compound-0.8.10/CompHarness.sol -p ./contracts/implementation/compound/compound-0.8.10/Unitroller.sol -u -v 0.8.10 --run-custom ./contracts/test/compound/DiffFuzzCustomInit.sol DiffFuzzCustomInit
+            args: ./contracts/implementation/compound/compound-0.8.10/ComptrollerHarnessV1.sol ./contracts/implementation/compound/compound-0.8.10/ComptrollerHarnessV2.sol -t ./contracts/implementation/compound/compound-0.8.10/CErc20.sol,./contracts/implementation/compound/compound-0.8.10/CompHarness.sol -p ./contracts/implementation/compound/compound-0.8.10/Unitroller.sol -u -V 0.8.10 --run-custom ./contracts/test/compound/DiffFuzzCustomInit.sol DiffFuzzCustomInit
 
     steps:
     - name: Checkout repository
