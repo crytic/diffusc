@@ -38,7 +38,7 @@ def test_diffusc_fork_mode() -> None:
             "bsc",
             "-b",
             "26857408",
-            "-v",
+            "-V",
             "0.8.11",
             "-d",
             output_dir,
