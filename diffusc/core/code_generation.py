@@ -435,7 +435,7 @@ class CodeGenerator:
             target = camel_case(c_data["name"])
         else:
             target = camel_case(proxy["name"])
-        if not self._fork:
+        if not self._fork or proxy is None:
             target += c_data["suffix"]
         _, call_args, _, _ = self.get_args_and_returns_for_wrapping(func)
         wrapped = ""
