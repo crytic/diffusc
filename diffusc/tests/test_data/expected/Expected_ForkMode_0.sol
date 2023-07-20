@@ -292,7 +292,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
         hevm.prank(msg.sender);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'initialize()'
             )
@@ -300,7 +300,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'initialize()'
             )
@@ -315,7 +315,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
         hevm.prank(msg.sender);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'balanceOf(address)', a
             )
@@ -323,7 +323,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'balanceOf(address)', a
             )
@@ -338,7 +338,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
         hevm.prank(msg.sender);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'transfer(address,uint256)', a, b
             )
@@ -346,7 +346,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'transfer(address,uint256)', a, b
             )
@@ -361,7 +361,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
         hevm.prank(msg.sender);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'transferFrom(address,address,uint256)', a, b, c
             )
@@ -369,7 +369,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'transferFrom(address,address,uint256)', a, b, c
             )
@@ -384,7 +384,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
         hevm.prank(msg.sender);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'totalFees()'
             )
@@ -392,7 +392,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'totalFees()'
             )
@@ -407,7 +407,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
         hevm.prank(msg.sender);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'reflectionFromTokenInTiers(uint256,uint256,bool)', a, b, c
             )
@@ -415,7 +415,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'reflectionFromTokenInTiers(uint256,uint256,bool)', a, b, c
             )
@@ -430,7 +430,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
         hevm.prank(msg.sender);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'reflectionFromToken(uint256,bool)', a, b
             )
@@ -438,7 +438,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'reflectionFromToken(uint256,bool)', a, b
             )
@@ -453,7 +453,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
         hevm.prank(msg.sender);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'tokenFromReflection(uint256)', a
             )
@@ -461,7 +461,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'tokenFromReflection(uint256)', a
             )
@@ -476,7 +476,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
         hevm.prank(msg.sender);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'accountTier(address)', a
             )
@@ -484,7 +484,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'accountTier(address)', a
             )
@@ -499,7 +499,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
         hevm.prank(msg.sender);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'feeTier(uint256)', a
             )
@@ -507,7 +507,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'feeTier(uint256)', a
             )
@@ -522,7 +522,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
         hevm.prank(msg.sender);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'migrate(address,uint256)', a, b
             )
@@ -530,7 +530,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'migrate(address,uint256)', a, b
             )
@@ -545,7 +545,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
         hevm.prank(msg.sender);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'feeTiersLength()'
             )
@@ -553,7 +553,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'feeTiersLength()'
             )
@@ -568,7 +568,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
         hevm.prank(msg.sender);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'getContractBalance()'
             )
@@ -576,7 +576,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'getContractBalance()'
             )
@@ -591,7 +591,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
         hevm.prank(msg.sender);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'mint(address,uint256)', a, b
             )
@@ -599,7 +599,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'mint(address,uint256)', a, b
             )
@@ -621,7 +621,7 @@ contract DiffFuzzUpgrades {
     function Safemoon_burn(address a, uint256 b) public virtual {
         hevm.selectFork(fork1);
         emit SwitchedFork(fork1);
-        (bool successV1, bytes memory outputV1) = address(safemoon).call(
+        (bool successV1, bytes memory outputV1) = address(safemoonV1).call(
             abi.encodeWithSignature(
                 'burn(uint256)', a
             )
@@ -629,7 +629,7 @@ contract DiffFuzzUpgrades {
         hevm.selectFork(fork2);
         emit SwitchedFork(fork2);
         hevm.prank(msg.sender);
-        (bool successV2, bytes memory outputV2) = address(safemoon).call(
+        (bool successV2, bytes memory outputV2) = address(safemoonV2).call(
             abi.encodeWithSignature(
                 'burn(address,uint256)', a, b
             )
