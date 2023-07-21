@@ -7,6 +7,7 @@ import logging
 import os
 import sys
 from typing import Sequence, Optional
+from pkg_resources import require
 
 from solc_select.solc_select import switch_global_version
 from eth_utils import is_address
@@ -54,10 +55,17 @@ def main(_args: Optional[Sequence[str]] = None) -> int:
         help="Specifies the address to which to deploy the test contract.",
     )
     parser.add_argument(
-        "-v",
-        "--version",
+        "-V",
+        "--solc-version",
         dest="version",
         help="Specifies the solc version to use in the test contract (default is 0.8.0).",
+    )
+    parser.add_argument(
+        "-v",
+        "--version",
+        help="Displays the current version of diffusc",
+        version=require("diffusc")[0].version,
+        action="version",
     )
     parser.add_argument(
         "-u",

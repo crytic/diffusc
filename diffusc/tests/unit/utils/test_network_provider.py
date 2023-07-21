@@ -261,7 +261,7 @@ def test_missing_token_holders() -> None:
 def test_few_token_holders() -> None:
     rpc_url = os.getenv("GOERLI_RPC_URL")
     assert rpc_url is not None
-    net_info = NetworkInfoProvider(rpc_url, 9039011)
+    net_info = NetworkInfoProvider(rpc_url, 9029011)
     api_key = os.getenv("GOERLI_API_KEY")
     assert api_key is not None
     contract_addr = "0xae4c231A9e2D5db591540e59d6374C3D2c1a2e04"

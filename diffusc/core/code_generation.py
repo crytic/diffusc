@@ -435,7 +435,7 @@ class CodeGenerator:
             target = camel_case(c_data["name"])
         else:
             target = camel_case(proxy["name"])
-        if not self._fork:
+        if not self._fork or proxy is None:
             target += c_data["suffix"]
         _, call_args, _, _ = self.get_args_and_returns_for_wrapping(func)
         wrapped = ""
@@ -936,7 +936,7 @@ class CodeGenerator:
 
         CryticPrint.print_information("\n* Generating exploit contract...")
         # Add solidity pragma and SPDX to avoid warnings
-        final_contract += f"// SPDX-License-Identifier: AGPLv3\npragma solidity ^{version};\n\n"
+        final_contract += f"// SPDX-License-Identifier: AGPLv3\npragma solidity >={version};\n\n"
         try:
             # Check the major version number, and include abi encoder if below 0.8.0
             major_version = int(self._version.split(".")[1])

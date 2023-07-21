@@ -12,10 +12,10 @@ def test_pragma_from_file() -> None:
 
     file = os.path.join(TEST_DATA_DIR, "pragmaA.sol")
     versions = helpers.get_pragma_versions_from_file(file)
-    assert versions == ("0.8.0", "0.8.20")
+    assert versions == ("0.8.0", "0.8.21")
     file = os.path.join(TEST_DATA_DIR, "pragmaB.sol")
     versions = helpers.get_pragma_versions_from_file(file)
-    assert versions == ("0.8.2", "0.8.20")
+    assert versions == ("0.8.2", "0.8.21")
     file = os.path.join(TEST_DATA_DIR, "pragmaC.sol")
     versions = helpers.get_pragma_versions_from_file(file)
     assert versions == ("0.8.2", "0.8.17")

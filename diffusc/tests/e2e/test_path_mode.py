@@ -21,7 +21,7 @@ def test_diffusc_path_mode() -> None:
         os.path.join(TEST_DATA_DIR, "ContractV2.sol"),
         "-d",
         output_dir,
-        "-v",
+        "-V",
         "0.8.2",
     ]
     assert main(args) == 0
@@ -122,7 +122,7 @@ def test_diffusc_path_run_mode() -> None:
         os.path.join(safemoon_dir, "SafemoonV3.sol"),
         "-p",
         os.path.join(safemoon_dir, "TransparentProxyTestHarness.sol"),
-        "-v",
+        "-V",
         "0.8.11",
         "-d",
         output_dir,
