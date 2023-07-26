@@ -118,6 +118,12 @@ def get_pragma_versions_from_file(
     for path in files:
         if path.startswith("./"):
             path = os.path.join(os.path.dirname(filepath), path[2:])
+        elif path.startswith("../../../../"):
+            path = os.path.join(os.path.dirname(os.path.dirname(filepath)), path[12:])
+        elif path.startswith("../../../"):
+            path = os.path.join(os.path.dirname(os.path.dirname(filepath)), path[9:])
+        elif path.startswith("../../"):
+            path = os.path.join(os.path.dirname(os.path.dirname(filepath)), path[6:])
         elif path.startswith("../"):
             path = os.path.join(os.path.dirname(os.path.dirname(filepath)), path[3:])
         if path not in seen:
