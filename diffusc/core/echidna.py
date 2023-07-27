@@ -2,12 +2,16 @@ import os.path
 import time
 import json
 import shutil
+from pathlib import Path
 from io import UnsupportedOperation
 from os import mkdir
 from subprocess import Popen, PIPE
 from typing import List, Tuple
 
 from diffusc.utils.crytic_print import CryticPrint
+
+
+ECHIDNA_BIN_PATH = Path(__file__).resolve().parent.parent.parent / "bin" / "echidna"
 
 
 def create_echidna_process(
@@ -18,7 +22,8 @@ def create_echidna_process(
     except OSError:
         pass
 
-    call = ["echidna"]
+    path_to_echidna_from_prefix = os.path.relpath(ECHIDNA_BIN_PATH, prefix)
+    call = [path_to_echidna_from_prefix]
     call.extend([filename])
     call.extend(["--config", config])
     call.extend(["--contract", contract])
