@@ -68,7 +68,6 @@ git clone https://github.com/crytic/diffusc.git
 cd diffusc
 pip3 install .
 ```
-You will also need copy the Echidna binary from `./bin/echidna` to `/usr/local/bin` (or wherever Windows expects to find the binary) in order to fuzz with the auto-generated test contracts.
 
 ## Running Diffusc
 The minimum required arguments for running Diffusc are two contracts, provided as either file paths or addresses:
