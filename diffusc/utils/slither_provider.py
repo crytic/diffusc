@@ -119,7 +119,7 @@ class NetworkSlitherProvider(SlitherProvider):
         return slither
 
     def _generate_api_key_dict(self) -> dict:  # pragma: no cover
-        out_dict = {}
+        out_dict = {"etherscan_only_source_code": True}
         if self._network_prefix == "mainet":
             out_dict["etherscan_api_key"] = self._api_key
         elif self._network_prefix == "arbi":
