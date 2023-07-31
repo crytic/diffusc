@@ -68,7 +68,6 @@ git clone https://github.com/crytic/diffusc.git
 cd diffusc
 pip3 install .
 ```
-You will also need copy the Echidna binary from `./bin/echidna` to `/usr/local/bin` (or wherever Windows expects to find the binary) in order to fuzz with the auto-generated test contracts.
 
 ## Running Diffusc
 The minimum required arguments for running Diffusc are two contracts, provided as either file paths or addresses:
@@ -82,11 +81,11 @@ echidna DiffFuzzUpgrades.sol --contract DiffFuzzUpgrades --config CryticConfig.y
 ```
 Or you can provide additional arguments for more effective testing:
 ```bash
-diffusc ./contracts/implementation/compound/compound-0.8.10/ComptrollerHarnessV1.sol ./contracts/implementation/compound/compound-0.8.10/ComptrollerHarnessV2.sol -d ./contracts/test/compound/ -t ./contracts/implementation/compound/compound-0.8.10/CErc20.sol,./contracts/implementation/compound/compound-0.8.10/CompHarness.sol -p ./contracts/implementation/compound/compound-0.8.10/Unitroller.sol -u -v 0.8.10 --run-custom ./contracts/test/compound/DiffFuzzCustomInit.sol DiffFuzzCustomInit
+diffusc ./contracts/implementation/compound/compound-0.8.10/ComptrollerHarnessV1.sol ./contracts/implementation/compound/compound-0.8.10/ComptrollerHarnessV2.sol -d ./contracts/test/compound/ -t ./contracts/implementation/compound/compound-0.8.10/CErc20.sol,./contracts/implementation/compound/compound-0.8.10/CompHarness.sol -p ./contracts/implementation/compound/compound-0.8.10/Unitroller.sol -u -V 0.8.10 --run-custom ./contracts/test/compound/DiffFuzzCustomInit.sol DiffFuzzCustomInit
 ```
 Similarly, to test fuzzing Compound in fork mode, try:
 ```bash
-diffusc 0x75442Ac771a7243433e033F3F8EaB2631e22938f 0x374ABb8cE19A73f2c4EFAd642bda76c797f19233 -t 0x12392F67bdf24faE0AF363c24aC620a2f67DAd86:0xa035b9e130f2b1aedc733eefb1c67ba4c503491f,0xc00e94Cb662C3520282E6f5717214004A7f26888 -p 0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B -u -v 0.8.10 -T --token-holder 0x309d413391e975B553B7B8D19bC11F8a6c2eB889 -r
+diffusc 0x75442Ac771a7243433e033F3F8EaB2631e22938f 0x374ABb8cE19A73f2c4EFAd642bda76c797f19233 -t 0x12392F67bdf24faE0AF363c24aC620a2f67DAd86:0xa035b9e130f2b1aedc733eefb1c67ba4c503491f,0xc00e94Cb662C3520282E6f5717214004A7f26888 -p 0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B -u -V 0.8.10 -T --token-holder 0x309d413391e975B553B7B8D19bC11F8a6c2eB889 -r
 ```
 
 ### Command Line Arguments

@@ -29,8 +29,8 @@ def main(_args: Optional[Sequence[str]] = None) -> int:
     # Read command line arguments
 
     parser = argparse.ArgumentParser(
-        prog="diff-fuzz-upgrades",
-        description="Generate differential fuzz testing contract for comparing two upgradeable contract versions.",
+        prog="diffusc",
+        description="Differential fuzzing w/ static taint analysis for comparing two upgradeable contract versions.",
     )
 
     parser.add_argument("v1", help="The original version of the contract.")
