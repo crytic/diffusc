@@ -50,8 +50,7 @@ jobs:
     - name: Install diffusc
       run: |
         pip3 install ".[test]"
-        mkdir /opt/hostedtoolcache/Python/3.10.12/x64/lib/python3.10/site-packages/bin/
-        sudo cp bin/echidna /opt/hostedtoolcache/Python/3.10.12/x64/lib/python3.10/site-packages/bin/
+        sudo cp bin/echidna-diffusc /usr/local/bin
         solc-select install 0.8.17
         solc-select use 0.8.17
 

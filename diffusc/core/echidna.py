@@ -22,8 +22,7 @@ def create_echidna_process(
     except OSError:
         pass
 
-    path_to_echidna_from_prefix = os.path.relpath(ECHIDNA_BIN_PATH, prefix)
-    call = [path_to_echidna_from_prefix]
+    call = ["echidna-diffusc"]
     call.extend([filename])
     call.extend(["--config", config])
     call.extend(["--contract", contract])
