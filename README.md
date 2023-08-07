@@ -62,11 +62,12 @@ diffusc
 
 ## Setup
 
-After cloning this repo, run the setup script (ideally in a virtual environment):
+After cloning this repo, run the setup script (ideally in a virtual environment) and copy the `echidna-diffusc` binary to `/usr/local/bin`:
 ```bash
 git clone https://github.com/crytic/diffusc.git
 cd diffusc
 pip3 install .
+cp bin/echidna-diffusc /usr/local/bin
 ```
 
 ## Running Diffusc
