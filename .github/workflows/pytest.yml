@@ -54,7 +54,7 @@ jobs:
         # Only run coverage on ubuntu-latest.
         run: |
           if [ ${{ matrix.os }} = "ubuntu-latest" ]; then
-            sudo cp bin/echidna /usr/local/bin
+            sudo cp bin/echidna-diffusc /usr/local/bin
             TEST_ARGS="--cov=diffusc --cov-append"
           elif [ ${{ matrix.os }} = "windows-2022" ]; then
             TEST_ARGS=""

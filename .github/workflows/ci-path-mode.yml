@@ -33,8 +33,8 @@ jobs:
 
     - name: Install diffusc
       run: |
-        pip3 install .
-        sudo cp bin/echidna /usr/local/bin
+        pip3 install ".[test]"
+        sudo cp bin/echidna-diffusc /usr/local/bin
         solc-select install 0.8.11
         solc-select use 0.8.11
 
