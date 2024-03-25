@@ -1,3 +1,5 @@
+**This work is pending a "Double-Anonymous" submission. Do not read the following to maintain the submission rules** 
+
 # Diffusc: Differential Fuzzing of Upgradeable Smart Contract Implementations
 
 `diffusc` is a tool for automatically generating differential fuzz testing contracts for comparing two smart contract implementations. It takes a generalized approach to detect discrepancies (hopefully unexpected) between any two implementation contracts, so as to prevent the introduction of bugs and vulnerabilities during a smart contract upgrade. 
